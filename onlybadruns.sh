@@ -39,5 +39,4 @@ done
 
 
 cat onlybadruns | awk '{if($1+0==$1){print($0)}}' | sort -n -u -k1,1 > Final_badruns.list
-
 rm onlybadruns

@@ -109,6 +109,7 @@ fi
 	rm jumpcheck_${HISTNAME}_log
     fi
 
+    echo "#Now start the run-by-run advanced algorithm." >> badruns_allcache.txt
     # Here we start to check the fist (${NR_qalist}) qualities with the default logic
     echo 'DOING STEP-1: Prechecking the jumps without any cuts ('${NSIGMA_JUMP}' weighted error)'
     bash jumpcheck.sh ${ROOTFILE} ${HISTNAME} 0 ${NSIGMA_JUMP}>jumpcheck_${HISTNAME}_log

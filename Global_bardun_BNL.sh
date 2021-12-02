@@ -1,6 +1,6 @@
 ##This code is writing to remove the global badruns 
 
-INPUTROOTFILE=QA_BNL.root
+INPUTROOTFILE=ashik_hist_111.root
 
 echo "##################################################"
 echo "###### REMOVE GLOBAL BADRUNS FOR BNL GROUP ######"
@@ -33,16 +33,19 @@ if [ -f Final_badruns_sum_global.list ]; then
  rm Final_badruns_sum_global.list
 fi
 
+
+echo "#Badruns got by all the steps" > badruns_allcache.txt
+echo "#Global badruns, round 1: "  >> badruns_allcache.txt
 bash onlybadruns.sh ${INPUTROOTFILE} qa_BNL.list Final_regions_BE.list
 cat Final_badruns.list | awk '{print($1)}' > Final_badruns_1.list
 root -l -b -q Cleanbadrun_BNL.C\(\"${INPUTROOTFILE}\",\"QA_BNL_r2.root\",\"Final_badruns_1.list\"\)
 
 cat Final_badruns_1.list >> Final_badruns_sum_global.list
 
-
-for i in 2 3 4 5 
+for i in 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 do
     j=$((i+1))
+    echo "#Global badruns, round "$i":" >> badruns_allcache.txt
     bash onlybadruns.sh QA_BNL_r${i}.root qa_BNL.list Final_regions_BE.list
     NR_Gbad=$(cat Final_badruns.list | wc -l)
     if [ ${NR_Gbad} -eq 0 ]; then
