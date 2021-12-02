@@ -1,8 +1,16 @@
-# run-by-run-qa-algorithm
+# run-by-run-qa-algorithm version-1.1
 Developed for the isobar blind analysis
 
 Orignal developed for Isobar-Blind Analysis
 Contact: <yuhu@bnl.gov>, <ptribedy@bnl.gov>
+
+############################################
+##############   Update log   ##############
+############################################
+### 2021-12-01
+### 1) Edited the <Global_bardun_BNL.sh>, <badrunfinder.sh>, and <runbyrun_advanced.sh> to save the repeated badruns. The information will be saved in a new file <badruns_allcache.txt>.  
+### 2) See the <checkrepeated.sh> about how to find repeated badruns from <badruns_allcache.txt> 
+
 
 ############################################
 ######   Necessary in this package   #######
@@ -58,7 +66,7 @@ Use QA_BNL.root file as an example:
    e.g: bash SaveOriMean.sh QA_BNL.root qa_BNL.list
 
 
-2> Run the Global_badrun_BNL.sh:
+2> Run the Global_badrun_BNL.sh, don't forget to change the L3 into your root file name:
    e.g: bash Global_badrun_BNL.sh
 
 
