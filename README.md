@@ -7,6 +7,11 @@ Contact: <yuhu@bnl.gov>, <ptribedy@bnl.gov>
 ############################################
 ##############   Update log   ##############
 ############################################
+### 2021-12-03
+### 1) Updated the <badrunfinder.sh> for badrun identification. It should take the statistical error into account,
+###    If one given period has mean(u1) and error(e1); and one given run has mean value(u2) with error(e2)
+###    The way to check bad run should be (u1-u2)^2 > n-sigma^2*(e1^2+e2^2)
+############################################
 ### 2021-12-01
 ### 1) Edited the <Global_bardun_BNL.sh>, <badrunfinder.sh>, and <runbyrun_advanced.sh> to save the repeated badruns. The information will be saved in a new file <badruns_allcache.txt>.  
 ### 2) See the <checkrepeated.sh> about how to find repeated badruns from <badruns_allcache.txt> 
