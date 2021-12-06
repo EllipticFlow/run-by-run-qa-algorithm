@@ -7,6 +7,10 @@ Contact: <yuhu@bnl.gov>, <ptribedy@bnl.gov>
 ############################################
 ##############   Update log   ##############
 ############################################
+### 2021-12-05
+### 1) The updates on 2021-12-03 may lead to some errors when it works on too many negetive values for some quality
+###    Fixed with an another shell function.
+############################################
 ### 2021-12-03
 ### 1) Updated the <badrunfinder.sh> for badrun identification. It should take the statistical error into account,
 ###    If one given period has mean(u1) and error(e1); and one given run has mean value(u2) with error(e2)

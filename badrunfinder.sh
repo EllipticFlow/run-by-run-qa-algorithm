@@ -129,10 +129,12 @@ do
     if [ ${round} -eq 0 ]
     then
 	#awk '{if (($2>'${mean}'+'${n_sigma}'*$5)||($2<'${mean}'-'${n_sigma}'*$5)) print( $1, $2, $3,'${mean}'-'${n_sigma}'*$5, '${mean}'+'${n_sigma}'*$5)  }' "region_${tempnumber}.dat" > badruns_${tempnumber}.dat
-	awk '{if(($2-'${mean}')^2-'${n_sigma}'*'${n_sigma}'*($5*$5+$3*$3)>0.0){print( $1, $2, $3,'${mean}'-'${n_sigma}'*$5, '${mean}'+'${n_sigma}'*$5)}}' "region_${tempnumber}.dat" > badruns_${tempnumber}.dat
+	#awk '{if(($2-'${mean}')^2-'${n_sigma}'*'${n_sigma}'*($5*$5+$3*$3)>0.0){print( $1, $2, $3,'${mean}'-'${n_sigma}'*$5, '${mean}'+'${n_sigma}'*$5)}}' "region_${tempnumber}.dat" > badruns_${tempnumber}.dat
+	awk '{if(($2>'${mean}'+'${n_sigma}'*($5*$5+$3*$3)^0.5)||($2<'${mean}'-'${n_sigma}'*($5*$5+$3*$3)^0.5)){print( $1, $2, $3,'${mean}'-'${n_sigma}'*$5, '${mean}'+'${n_sigma}'*$5)}}' "region_${tempnumber}.dat" > badruns_${tempnumber}.dat
     else
 	#awk '{if (($2>'${mean}'+'${n_sigma}'*'${sigma}')||($2<'${mean}'-'${n_sigma}'*'${sigma}')) print( $1, $2, $3,'${mean}'-'${n_sigma}'*'${sigma}', '${mean}'+'${n_sigma}'*'${sigma}')  }' "region_${tempnumber}.dat"> badruns_${tempnumber}.dat
-	awk '{if(($2-'${mean}')^2-'${n_sigma}'*'${n_sigma}'*('${sigma}'*'${sigma}'+$3*$3)>0.0){print( $1, $2, $3,'${mean}'-'${n_sigma}'*'${sigma}', '${mean}'+'${n_sigma}'*'${sigma}')}}' "region_${tempnumber}.dat"> badruns_${tempnumber}.dat
+	#awk '{if(($2-'${mean}')^2-'${n_sigma}'*'${n_sigma}'*('${sigma}'*'${sigma}'+$3*$3)>0.0){print( $1, $2, $3,'${mean}'-'${n_sigma}'*'${sigma}', '${mean}'+'${n_sigma}'*'${sigma}')}}' "region_${tempnumber}.dat"> badruns_${tempnumber}.dat
+	awk '{if (($2>'${mean}'+'${n_sigma}'*('${sigma}'*'${sigma}'+$3*$3)^0.5)||($2<'${mean}'-'${n_sigma}'*('${sigma}'*'${sigma}'+$3*$3)^0.5)) print( $1, $2, $3,'${mean}'-'${n_sigma}'*'${sigma}', '${mean}'+'${n_sigma}'*'${sigma}')  }' "region_${tempnumber}.dat"> badruns_${tempnumber}.dat
     fi
     if [ ${round} -eq 0 ]; then
     awk '{print($1,"#'${input}'_badruns", "'${n_sigma}'SIGMA" )}' "badruns_${tempnumber}.dat" >> badrunlist_${input}_round${round}.list
